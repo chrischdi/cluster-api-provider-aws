@@ -23,7 +23,7 @@ import (
 	runtime "k8s.io/apimachinery/pkg/runtime"
 
 	eksbootstrapv1 "sigs.k8s.io/cluster-api-provider-aws/v2/bootstrap/eks/api/v1beta2"
-	utilconversion "sigs.k8s.io/cluster-api/util/conversion"
+	utilconversiontest "sigs.k8s.io/cluster-api/util/conversion_test"
 )
 
 func TestFuzzyConversion(t *testing.T) {
@@ -32,13 +32,13 @@ func TestFuzzyConversion(t *testing.T) {
 	g.Expect(AddToScheme(scheme)).To(Succeed())
 	g.Expect(eksbootstrapv1.AddToScheme(scheme)).To(Succeed())
 
-	t.Run("for EKSConfig", utilconversion.FuzzTestFunc(utilconversion.FuzzTestFuncInput{
+	t.Run("for EKSConfig", utilconversiontest.FuzzTestFunc(utilconversiontest.FuzzTestFuncInput{
 		Scheme: scheme,
 		Hub:    &eksbootstrapv1.EKSConfig{},
 		Spoke:  &EKSConfig{},
 	}))
 
-	t.Run("for EKSConfigTemplate", utilconversion.FuzzTestFunc(utilconversion.FuzzTestFuncInput{
+	t.Run("for EKSConfigTemplate", utilconversiontest.FuzzTestFunc(utilconversiontest.FuzzTestFuncInput{
 		Scheme: scheme,
 		Hub:    &eksbootstrapv1.EKSConfigTemplate{},
 		Spoke:  &EKSConfigTemplate{},

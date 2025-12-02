@@ -2078,7 +2078,7 @@ sigs.k8s.io/apiserver-network-proxy/konnectivity-client/proto/client
 ## explicit; go 1.21
 sigs.k8s.io/aws-iam-authenticator/pkg/mapper/crd/apis/iamauthenticator
 sigs.k8s.io/aws-iam-authenticator/pkg/mapper/crd/apis/iamauthenticator/v1alpha1
-# sigs.k8s.io/cluster-api v1.10.2
+# sigs.k8s.io/cluster-api v1.10.2 => github.com/chrischdi/openshift-cluster-api v0.0.0-20251202063748-6c1a538d7cd0
 ## explicit; go 1.23.0
 sigs.k8s.io/cluster-api/api/addons/v1beta1
 sigs.k8s.io/cluster-api/api/v1beta1
@@ -2150,6 +2150,7 @@ sigs.k8s.io/cluster-api/util/conditions/v1beta2
 sigs.k8s.io/cluster-api/util/container
 sigs.k8s.io/cluster-api/util/contract
 sigs.k8s.io/cluster-api/util/conversion
+sigs.k8s.io/cluster-api/util/conversion_test
 sigs.k8s.io/cluster-api/util/finalizers
 sigs.k8s.io/cluster-api/util/flags
 sigs.k8s.io/cluster-api/util/kubeconfig
@@ -2296,3 +2297,4 @@ sigs.k8s.io/structured-merge-diff/v4/value
 ## explicit; go 1.12
 sigs.k8s.io/yaml
 sigs.k8s.io/yaml/goyaml.v2
+# sigs.k8s.io/cluster-api => github.com/chrischdi/openshift-cluster-api v0.0.0-20251202063748-6c1a538d7cd0

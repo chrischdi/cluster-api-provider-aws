@@ -23,7 +23,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 
 	"sigs.k8s.io/cluster-api-provider-aws/v2/exp/api/v1beta2"
-	utilconversion "sigs.k8s.io/cluster-api/util/conversion"
+	utilconversiontest "sigs.k8s.io/cluster-api/util/conversion_test"
 )
 
 func TestFuzzyConversion(t *testing.T) {
@@ -32,19 +32,19 @@ func TestFuzzyConversion(t *testing.T) {
 	g.Expect(AddToScheme(scheme)).To(Succeed())
 	g.Expect(v1beta2.AddToScheme(scheme)).To(Succeed())
 
-	t.Run("for AWSMachinePool", utilconversion.FuzzTestFunc(utilconversion.FuzzTestFuncInput{
+	t.Run("for AWSMachinePool", utilconversiontest.FuzzTestFunc(utilconversiontest.FuzzTestFuncInput{
 		Scheme: scheme,
 		Hub:    &v1beta2.AWSMachinePool{},
 		Spoke:  &AWSMachinePool{},
 	}))
 
-	t.Run("for AWSManagedMachinePool", utilconversion.FuzzTestFunc(utilconversion.FuzzTestFuncInput{
+	t.Run("for AWSManagedMachinePool", utilconversiontest.FuzzTestFunc(utilconversiontest.FuzzTestFuncInput{
 		Scheme: scheme,
 		Hub:    &v1beta2.AWSManagedMachinePool{},
 		Spoke:  &AWSManagedMachinePool{},
 	}))
 
-	t.Run("for AWSFargateProfile", utilconversion.FuzzTestFunc(utilconversion.FuzzTestFuncInput{
+	t.Run("for AWSFargateProfile", utilconversiontest.FuzzTestFunc(utilconversiontest.FuzzTestFuncInput{
 		Scheme: scheme,
 		Hub:    &v1beta2.AWSFargateProfile{},
 		Spoke:  &AWSFargateProfile{},

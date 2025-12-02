@@ -26,7 +26,7 @@ import (
 	runtimeserializer "k8s.io/apimachinery/pkg/runtime/serializer"
 
 	"sigs.k8s.io/cluster-api-provider-aws/v2/api/v1beta2"
-	utilconversion "sigs.k8s.io/cluster-api/util/conversion"
+	utilconversiontest "sigs.k8s.io/cluster-api/util/conversion_test"
 )
 
 func fuzzFuncs(_ runtimeserializer.CodecFactory) []interface{} {
@@ -74,39 +74,39 @@ func TestFuzzyConversion(t *testing.T) {
 	g.Expect(AddToScheme(scheme)).To(Succeed())
 	g.Expect(v1beta2.AddToScheme(scheme)).To(Succeed())
 
-	t.Run("for AWSCluster", utilconversion.FuzzTestFunc(utilconversion.FuzzTestFuncInput{
+	t.Run("for AWSCluster", utilconversiontest.FuzzTestFunc(utilconversiontest.FuzzTestFuncInput{
 		Scheme: scheme,
 		Hub:    &v1beta2.AWSCluster{},
 		Spoke:  &AWSCluster{},
 	}))
 
-	t.Run("for AWSMachine", utilconversion.FuzzTestFunc(utilconversion.FuzzTestFuncInput{
+	t.Run("for AWSMachine", utilconversiontest.FuzzTestFunc(utilconversiontest.FuzzTestFuncInput{
 		Scheme:      scheme,
 		Hub:         &v1beta2.AWSMachine{},
 		Spoke:       &AWSMachine{},
 		FuzzerFuncs: []fuzzer.FuzzerFuncs{fuzzFuncs},
 	}))
 
-	t.Run("for AWSMachineTemplate", utilconversion.FuzzTestFunc(utilconversion.FuzzTestFuncInput{
+	t.Run("for AWSMachineTemplate", utilconversiontest.FuzzTestFunc(utilconversiontest.FuzzTestFuncInput{
 		Scheme:      scheme,
 		Hub:         &v1beta2.AWSMachineTemplate{},
 		Spoke:       &AWSMachineTemplate{},
 		FuzzerFuncs: []fuzzer.FuzzerFuncs{fuzzFuncs},
 	}))
 
-	t.Run("for AWSClusterStaticIdentity", utilconversion.FuzzTestFunc(utilconversion.FuzzTestFuncInput{
+	t.Run("for AWSClusterStaticIdentity", utilconversiontest.FuzzTestFunc(utilconversiontest.FuzzTestFuncInput{
 		Scheme: scheme,
 		Hub:    &v1beta2.AWSClusterStaticIdentity{},
 		Spoke:  &AWSClusterStaticIdentity{},
 	}))
 
-	t.Run("for AWSClusterControllerIdentity", utilconversion.FuzzTestFunc(utilconversion.FuzzTestFuncInput{
+	t.Run("for AWSClusterControllerIdentity", utilconversiontest.FuzzTestFunc(utilconversiontest.FuzzTestFuncInput{
 		Scheme: scheme,
 		Hub:    &v1beta2.AWSClusterControllerIdentity{},
 		Spoke:  &AWSClusterControllerIdentity{},
 	}))
 
-	t.Run("for AWSClusterRoleIdentity", utilconversion.FuzzTestFunc(utilconversion.FuzzTestFuncInput{
+	t.Run("for AWSClusterRoleIdentity", utilconversiontest.FuzzTestFunc(utilconversiontest.FuzzTestFuncInput{
 		Scheme: scheme,
 		Hub:    &v1beta2.AWSClusterRoleIdentity{},
 		Spoke:  &AWSClusterRoleIdentity{},

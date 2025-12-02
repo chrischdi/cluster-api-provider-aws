@@ -264,3 +264,5 @@ require (
 	sigs.k8s.io/kind v0.27.0 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.2 // indirect
 )
+
+replace sigs.k8s.io/cluster-api => github.com/chrischdi/openshift-cluster-api v0.0.0-20251202063748-6c1a538d7cd0

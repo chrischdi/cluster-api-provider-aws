@@ -26,7 +26,7 @@ import (
 	runtimeserializer "k8s.io/apimachinery/pkg/runtime/serializer"
 
 	"sigs.k8s.io/cluster-api-provider-aws/v2/controlplane/eks/api/v1beta2"
-	utilconversion "sigs.k8s.io/cluster-api/util/conversion"
+	utilconversiontest "sigs.k8s.io/cluster-api/util/conversion_test"
 )
 
 func fuzzFuncs(_ runtimeserializer.CodecFactory) []interface{} {
@@ -46,7 +46,7 @@ func TestFuzzyConversion(t *testing.T) {
 	g.Expect(AddToScheme(scheme)).To(Succeed())
 	g.Expect(v1beta2.AddToScheme(scheme)).To(Succeed())
 
-	t.Run("for AWSManagedControlPlane", utilconversion.FuzzTestFunc(utilconversion.FuzzTestFuncInput{
+	t.Run("for AWSManagedControlPlane", utilconversiontest.FuzzTestFunc(utilconversiontest.FuzzTestFuncInput{
 		Scheme:      scheme,
 		Hub:         &v1beta2.AWSManagedControlPlane{},
 		Spoke:       &AWSManagedControlPlane{},
